@@ -1,21 +1,35 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { Header } from "semantic-ui-react";
+import TabBarContainer from "./features/tabs/TabBarContainer";
+import "./App.css";
 
-import SampleComponent from "./SampleComponent";
+const UnitInfo = () => <div>Unit Info content</div>;
+
+const Pilots = () => <div>Pilots content</div>;
+
+const Mechs = () => <div>Mechs content</div>;
+
+const UnitOrganization = () => <div>Unit Organization content</div>;
 
 class App extends Component {
-    render() {
-        return (
-            <div className="App">
-                <div className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <h2>Project Mini-Mek</h2>
-                </div>
-                <SampleComponent />
-            </div>
-        );
-    }
+  render() {
+    const tabs = [
+      { name: "unitInfo", label: "Unit Info", component: UnitInfo},
+      { name: "pilots", label: "Pilots", component: Pilots},
+      { name: "mechs", label: "Mechs", component: Mechs},
+      { name: "unitOrganization", label: "Unit Organization", component: UnitOrganization }
+    ];
+    return (
+      <div className="App">
+        <div className="App-header">
+          <Header inverted as="h1">
+            Project Mini-Mek
+          </Header>
+        </div>
+        <TabBarContainer tabs={tabs} size="massive" />
+      </div>
+    );
+  }
 }
 
 export default App;
